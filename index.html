@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISRO: India's Journey to Space</title>
+    <!-- Google Fonts - Inter for clean typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom CSS for specific elements and overrides */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+        header {
+            background-color: #002147; /* Deep Navy Blue */
+            color: #ffffff;
+            text-align: center;
+            padding: 2.5rem 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative; /* For the subtle gradient effect */
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,165,0,0.1) 0%, rgba(0,33,71,0.9) 100%); /* Orange to Navy gradient overlay */
+            z-index: 0;
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 1;
+        }
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 50%; /* Make logo round */
+            border: 3px solid #ff9900; /* Orange border */
+            box-shadow: 0 0 15px rgba(255, 153, 0, 0.5); /* Glowing effect */
+        }
+        nav {
+            background-color: #1a4d8c; /* Slightly lighter blue for nav */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+        nav ul li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-radius: 0.5rem; /* Rounded corners for nav items */
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #ff9900; /* Orange hover */
+            color: #002147; /* Dark text on hover */
+        }
+        section {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 1rem; /* More rounded sections */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease-in-out;
+        }
+        section:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+        .section-title {
+            font-size: 2.25rem; /* Larger titles */
+            color: #002147;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #ff9900; /* Orange underline */
+            border-radius: 2px;
+        }
+        .intro p, .info-list ul {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        .info-list ul {
+            list-style: none; /* Remove default bullets */
+            padding: 0;
+        }
+        .info-list ul li {
+            background-color: #e6f0f7; /* Light blue background for list items */
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.75rem;
+            border-left: 5px solid #1a4d8c; /* Blue left border */
+            border-radius: 0.75rem;
+            transition: background-color 0.3s ease;
+        }
+        .info-list ul li:hover {
+            background-color: #d9e6f2; /* Slightly darker on hover */
+        }
+        .info-list ul li strong {
+            color: #002147;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .gallery figure {
+            background-color: #f9f9f9;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery figure:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        .gallery img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures images cover the area without distortion */
+            border-bottom: 1px solid #eee;
+        }
+        .gallery figcaption {
+            padding: 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: #002147;
+            font-size: 0.95rem;
+        }
+        footer {
+            background-color: #002147;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            nav ul {
+                flex-direction: column;
+            }
+            nav ul li a {
+                padding: 0.75rem 1rem;
+                text-align: center;
+            }
+            .section-title {
+                font-size: 1.75rem;
+            }
+            section {
+                padding: 1.5rem;
+            }
+            .gallery {
+                grid-template-columns: 1fr; /* Stack images on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://placehold.co/100x100/002147/ff9900?text=ISRO" alt="ISRO Logo" class="logo mx-auto">
+        <h1 class="text-4xl font-bold mb-2">Indian Space Research Organisation (ISRO)</h1>
+        <p class="text-lg italic">Harnessing Space for National Development</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About ISRO</a></li>
+            <li><a href="#history">Our History</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#future-missions">Future Missions</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">About ISRO</h2>
+            <p>The Indian Space Research Organisation (ISRO) is the national space agency of India, headquartered in Bengaluru. It operates under the Department of Space (DOS) which is directly overseen by the Prime Minister of India. ISRO was established on August 15, 1969, succeeding the Indian National Committee for Space Research (INCOSPAR), which was established in 1962 by Dr. Vikram Sarabhai, widely regarded as the father of the Indian space program.</p>
+            <p>ISRO's primary objective is to develop space technology and its application to various national tasks. This includes developing and operationalizing launch vehicles and rocket engines, satellites, and ground systems. ISRO's vision is to "harness space technology for national development while pursuing space science research and planetary exploration."</p>
+            <p>Over the decades, ISRO has evolved into a world-class space agency, renowned for its cost-effective and reliable missions, contributing significantly to telecommunications, remote sensing, meteorology, and scientific research in India and globally.</p>
+        </section>
+
+        <section id="history">
+            <h2 class="section-title">Our History</h2>
+            <div class="info-list">
+                <ul>
+                    <li><strong>1962:</strong> Indian National Committee for Space Research (INCOSPAR) formed under Dr. Vikram Sarabhai.</li>
+                    <li><strong>1963:</strong> First sounding rocket launched from Thumba Equatorial Rocket Launching Station (TERLS).</li>
+                    <li><strong>1969:</strong> ISRO established, replacing INCOSPAR.</li>
+                    <li><strong>1975:</strong> Launch of Aryabhata, India's first satellite, from a Soviet Cosmodrome.</li>
+                    <li><strong>1980:</strong> SLV-3 successfully launches Rohini satellite, making India the sixth nation to achieve orbital launch capability.</li>
+                    <li><strong>1983:</strong> INSAT-1B launched, marking a major step in India's communication satellite program.</li>
+                    <li><strong>1993:</strong> First successful developmental flight of PSLV (Polar Satellite Launch Vehicle).</li>
+                    <li><strong>2001:</strong> First successful developmental flight of GSLV (Geosynchronous Satellite Launch Vehicle).</li>
+                    <li><strong>2008:</strong> Chandrayaan-1, India's first mission to the Moon, discovers water molecules on the lunar surface.</li>
+                    <li><strong>2013:</strong> Mars Orbiter Mission (Mangalyaan) launched, successfully entering Mars orbit in 2014.</li>
+                    <li><strong>2017:</strong> PSLV-C37 successfully launches 104 satellites in a single mission, a world record.</li>
+                    <li><strong>2019:</strong> Chandrayaan-2 mission launched, including an orbiter, lander, and rover.</li>
+                    <li><strong>2023:</strong> Chandrayaan-3 successfully soft-lands on the Moon's south polar region.</li>
+                    <li><strong>2023:</strong> Aditya-L1, India's first solar observatory mission, launched.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <h2 class="section-title">Key Achievements & Milestones</h2>
+            <div class="info-list">
+                <ul>
+                    <li><strong>Indigenous Launch Vehicle Development:</strong> Mastered the technology for PSLV and GSLV, enabling self-reliance in satellite launches.</li>
+                    <li><strong>Satellite Constellations:</strong> Developed comprehensive satellite systems for communication (INSAT/GSAT), Earth observation (IRS), and navigation (NavIC).</li>
+                    <li><strong>Lunar Exploration:</strong> Chandrayaan-1 confirmed water on the Moon, and Chandrayaan-3 achieved a historic soft landing near the lunar south pole.</li>
+                    <li><strong>Interplanetary Mission:</strong> Mangalyaan (Mars Orbiter Mission) made India the first Asian nation to reach Mars orbit on its maiden attempt.</li>
+                    <li><strong>Cost-Effective Space Missions:</strong> Renowned globally for executing complex space missions at significantly lower costs.</li>
+                    <li><strong>International Collaboration:</strong> Engaged in numerous international collaborations, including NISAR with NASA.</li>
+                    <li><strong>Space-based Applications:</strong> Enabled widespread use of space technology for disaster management, urban planning, agriculture, and education.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title">ISRO Image Gallery</h2>
+            <div class="gallery">
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=PSLV+Rocket" alt="PSLV Rocket Launch">
+                    <figcaption>Polar Satellite Launch Vehicle (PSLV)</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=GSLV+Rocket" alt="GSLV Rocket Launch">
+                    <figcaption>Geosynchronous Satellite Launch Vehicle (GSLV)</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=Dr.+Vikram+Sarabhai" alt="Dr. Vikram Sarabhai">
+                    <figcaption>Dr. Vikram Sarabhai, Founder of ISRO</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=Current+ISRO+Chairman" alt="Current ISRO Chairman">
+                    <figcaption>Current ISRO Chairman</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=ISRO+Headquarters" alt="ISRO Headquarters Bengaluru">
+                    <figcaption>ISRO Headquarters, Bengaluru</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=Mission+Control+Center" alt="ISRO Mission Control Center">
+                    <figcaption>Mission Control Center Operations</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=Chandrayaan-3+Lander" alt="Chandrayaan-3 Lander">
+                    <figcaption>Chandrayaan-3 Lander (Vikram)</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=Mars+Orbiter+Mission" alt="Mars Orbiter Mission (Mangalyaan) Satellite">
+                    <figcaption>Mars Orbiter Mission (Mangalyaan)</figcaption>
+                </figure>
+                <figure>
+                    <img src="https://placehold.co/400x200/003366/FFFFFF?text=Aditya-L1+Satellite" alt="Aditya-L1 Solar Mission Satellite">
+                    <figcaption>Aditya-L1 Solar Mission</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="future-missions">
+            <h2 class="section-title">Future Missions & Endeavors</h2>
+            <div class="info-list">
+                <ul>
+                    <li><strong>Gaganyaan:</strong> India's first human spaceflight mission, aiming to send astronauts into low Earth orbit.</li>
+                    <li><strong>Shukrayaan-1:</strong> A planned orbiter mission to Venus to study its surface and atmosphere.</li>
+                    <li><strong>Lunar Polar Exploration Mission (LUPEX):</strong> A joint mission with JAXA (Japan) to explore the Moon's polar regions.</li>
+                    <li><strong>NISAR (NASA-ISRO Synthetic Aperture Radar):</strong> A joint Earth observation satellite with NASA for advanced remote sensing.</li>
+                    <li><strong>Next-Generation Launch Vehicle (NGLV):</strong> Development of a heavy-lift, reusable rocket for future space transportation needs.</li>
+                    <li><strong>Space Station Module:</strong> Long-term plans include developing an Indian space station module.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="leadership">
+            <h2 class="section-title">Leadership & Visionaries</h2>
+            <div class="info-list">
+                <ul>
+                    <li><strong>Dr. Vikram Sarabhai:</strong> The visionary founder of ISRO, whose pioneering efforts laid the foundation for India's space program.</li>
+                    <li><strong>Satish Dhawan:</strong> Former Chairman of ISRO, under whose leadership the Indian space program achieved significant operational milestones.</li>
+                    <li><strong>Dr. A.P.J. Abdul Kalam:</strong> Renowned scientist and former President of India, who played a pivotal role in India's missile and space programs.</li>
+                    <li><strong>Current Chairman:</strong> ISRO has been led by many distinguished scientists and engineers. The current chairman continues to guide the organization towards new frontiers in space exploration and technology.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact ISRO</h2>
+            <p class="text-center text-lg">
+                <strong>ISRO Headquarters</strong><br>
+                Antariksh Bhavan, New BEL Road,<br>
+                Bengaluru - 560 094,<br>
+                Karnataka, India
+            </p>
+            <p class="text-center text-lg mt-4">
+                <strong>Official Website:</strong> <a href="https://www.isro.gov.in" target="_blank" class="text-blue-600 hover:underline">www.isro.gov.in</a>
+            </p>
+            <p class="text-center text-md text-gray-600 mt-2">
+                For specific queries, please refer to the contact section on the official ISRO website.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Indian Space Research Organisation (ISRO). All rights reserved.</p>
+        <p>Designed with passion for space exploration.</p>
+    </footer>
+</body>
+</html>
